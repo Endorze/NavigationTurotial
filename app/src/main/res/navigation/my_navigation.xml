@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_navigation"
+    app:startDestination="@id/firstFragment">
+
+    <fragment
+        android:id="@+id/firstFragment"
+        android:name="com.example.navigationturotial.MainMenuFragment"
+        android:label="fragment_first"
+        tools:layout="@layout/fragment_main_menu" >
+        <action
+            android:id="@+id/mainMenuToGameFragment"
+            app:destination="@id/selectGameTypeFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/action_firstFragment_to_infoFragment"
+            app:destination="@id/infoFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/action_firstFragment_to_scoreFragment"
+            app:destination="@id/scoreFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectGameTypeFragment"
+        android:name="com.example.navigationturotial.gameSelectionFragment"
+        android:label="fragment_second"
+        tools:layout="@layout/fragment_game_selection" >
+        <action
+            android:id="@+id/gameTypeFragmentToDifficultyFragment"
+            app:destination="@id/selectDifficultyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="com.example.navigationturotial.infoFragment"
+        android:label="fragment_info"
+        tools:layout="@layout/fragment_info" />
+    <fragment
+        android:id="@+id/scoreFragment"
+        android:name="com.example.navigationturotial.ScoreFragment"
+        android:label="fragment_score"
+        tools:layout="@layout/fragment_score" >
+        <argument
+            android:name="easyScore"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="mediumScore"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="hardScore"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectDifficultyFragment"
+        android:name="com.example.navigationturotial.SelectDifficultyFragment"
+        android:label="fragment_math_game"
+        tools:layout="@layout/fragment_select_difficulty" >
+
+        <argument
+            android:name="gameType"
+            app:argType="com.example.navigationturotial.PracticeType"/>
+        <action
+            android:id="@+id/action_selectDifficultyFragmentToMathGameFragment"
+            app:destination="@id/mathGameFragmentEasy" />
+        <action
+            android:id="@+id/action_selectDifficultyFragment_to_mathGameFragmentHard"
+            app:destination="@id/mathGameFragmentHard" />
+        <action
+            android:id="@+id/action_selectDifficultyFragment_to_mathGameFragmentMedium"
+            app:destination="@id/mathGameFragmentMedium" />
+
+
+    </fragment>
+    <fragment
+        android:id="@+id/mathGameFragmentEasy"
+        android:name="com.example.navigationturotial.MathGameFragment"
+        android:label="fragment_math_game"
+        tools:layout="@layout/fragment_math_game" >
+        <argument
+            android:name="gameDifficulty"
+            app:argType="com.example.navigationturotial.DifficultyLevel" />
+        <argument
+            android:name="gameType"
+            app:argType="com.example.navigationturotial.PracticeType" />
+        <action
+            android:id="@+id/action_mathGameFragmentEasy_to_scoreFragment"
+            app:destination="@id/scoreFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mathGameFragmentMedium"
+        android:name="com.example.navigationturotial.mathGameFragmentMedium"
+        android:label="fragment_math_game_medium"
+        tools:layout="@layout/fragment_math_game_medium" >
+        <action
+            android:id="@+id/action_mathGameFragmentMedium_to_scoreFragment"
+            app:destination="@id/scoreFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mathGameFragmentHard"
+        android:name="com.example.navigationturotial.mathGameFragmentHard"
+        android:label="fragment_math_game_hard"
+        tools:layout="@layout/fragment_math_game_hard" >
+        <action
+            android:id="@+id/action_mathGameFragmentHard_to_scoreFragment"
+            app:destination="@id/scoreFragment" />
+    </fragment>
+</navigation>
